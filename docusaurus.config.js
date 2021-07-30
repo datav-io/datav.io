@@ -12,7 +12,7 @@ module.exports = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'datav-io', // Usually your GitHub org/user name.
-  projectName: 'datav-io', // Usually your repo name.
+  projectName: 'datav.io', // Usually your repo name.
   plugins: ["@chatwoot/docusaurus-plugin"],
   themeConfig: {
     chatwoot: {
@@ -34,6 +34,10 @@ module.exports = {
           label: 'Tutorial',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
         {
           href: githubUrl,
           label: 'GitHub',
@@ -104,6 +108,10 @@ module.exports = {
       searchParameters: {},
 
       //... other Algolia params
+    },
+    i18n: {
+      defaultLocale: 'en',
+      locales: ['en', 'fr'],
     },
   },
   presets: [
