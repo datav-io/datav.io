@@ -5,7 +5,7 @@ var githubUrl = "https://github.com/datav-io/datav"
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Datav',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Data visualization and monitoring',
   url: 'https://datav.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -14,17 +14,34 @@ module.exports = {
   organizationName: 'datav-io', // Usually your GitHub org/user name.
   projectName: 'datav.io', // Usually your repo name.
   plugins: ["@chatwoot/docusaurus-plugin"],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh'],
+  },
   themeConfig: {
     chatwoot: {
       websiteToken: "xwxqmct4bznshbQAjmLwBxfu",
       baseURL: "https://app.chatwoot.com",  // optional
       enableInDevelopment: false,  // optional
     },
+    prism: {
+      theme: require("prism-react-renderer/themes/vsDark"),
+    },
+    // prism: {
+    //   theme: lightCodeTheme,
+    //   darkTheme: darkCodeTheme,
+    // },
+    algolia: {
+      apiKey: 'eb68816ed36896bea6dd2faf8b0d62c7',
+      indexName: 'datav',
+      // Optional: Algolia search parameters
+      searchParameters: {},
+    },
     navbar: {
-      title: 'My Site',
+      title: 'Datav',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'logo',
+        src: 'img/logo/logo-xs.png',
       },
       items: [
         {
@@ -40,7 +57,7 @@ module.exports = {
         },
         {
           href: githubUrl,
-          label: 'GitHub',
+          // label: 'GitHub',
           position: 'right',
         },
       ],
@@ -88,30 +105,14 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} APM.AI, Inc. `,
+      // copyright: `Copyright © ${new Date().getFullYear()} APM.AI, Inc. `,
     },
-    prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
-    },
-    algolia: {
-      apiKey: 'eb68816ed36896bea6dd2faf8b0d62c7',
-      indexName: 'datav',
-
-      // Optional: see doc section below
-      contextualSearch: true,
-
-      // Optional: see doc section below
-      appId: 'BH4D9OD16A',
-
-      // Optional: Algolia search parameters
-      searchParameters: {},
-
-      //... other Algolia params
-    },
-    i18n: {
-      defaultLocale: 'en',
-      locales: ['en', 'fr'],
+    colorMode: {
+      respectPrefersColorScheme: true,
+      switchConfig: {
+        darkIcon: "🌑",
+        lightIcon: "💡",
+      },
     },
   },
   presets: [
@@ -131,7 +132,7 @@ module.exports = {
             'https://github.com/facebook/docusaurus/edit/master/website/blog/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/index.css'),
         },
       },
     ],
