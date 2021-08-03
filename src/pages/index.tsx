@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import classnames from "classnames"
 import Layout from "@theme/Layout"
 import Link from "@docusaurus/Link"
@@ -11,7 +11,7 @@ import styles from "./index.module.css"
 
 const features = [
   {
-    title: "Observability",
+    title: "Observability & APM",
     imageUrl: "img/undraw_social.svg",
     description: (
       <ul>
@@ -20,8 +20,8 @@ const features = [
         </li>
         <li>datav support all observability types,</li>
         <li>because we have native support for <a href="https://opentelemetry.io" target="_blank">OpenTelemetry</a>,</li>
-        <li>we can collect data from various services
-in a standard way</li>
+        <li>we can collect data from various services</li>
+        <li>in a standard way</li>
       </ul>
     ),
   },
@@ -42,15 +42,15 @@ in a standard way</li>
     ),
   },
   {
-    title: "APM",
+    title: "Forget huge AWS bill",
     imageUrl: "img/undraw_secure.svg",
     description: (
       <ul>
-        <li>Because of our powerful ui system,</li>
-        <li>we can build a better apm than DataDog&NewRelic.</li>
-        <li>Also, Datav is 100% open source,</li>
-        <li>built on latest stack and most importantly: </li>
-        <li>easy to use</li>
+        <li>We build lightning fast apm</li>
+        <li>in GO、RUST and Clickhouse.</li>
+        <li>This will help you save huge amount of money</li>
+        <li> and improve your query latency.</li>
+        <li><strong>Performance is very important to apm!</strong></li>
       </ul>
     ),
   },
@@ -81,7 +81,7 @@ function Feature({ imageUrl, title, description }) {
 function Home() {
   const context = useDocusaurusContext()
   const { siteConfig = {} } = context
-
+  const [panelImage, setPaneImage] = useState('https://signoz.io/img/metrics-tooltip-traces.jpg')
   useEffect(() => {
     fetch("https://api.github.com/repos/nextauthjs/next-auth")
       .then((res) => res.json())
@@ -146,8 +146,7 @@ function Home() {
               <div className="row">
                 <div className="col">
                   <h2 className={styles.featuresTitle}>
-                    <span>Metric,Trace,Log</span> <span>Grafana Like UI</span>{" "}
-                    <span>APM</span>
+                    <span>Metrics,Traces,Logs</span> <span>Lightning fast</span>{" "}
                   </h2>
                 </div>
               </div>
@@ -158,22 +157,74 @@ function Home() {
               </div>
             </div>
           </section>
-          {/* <section>
+          <section className={`section-features ${styles.features}`}>
             <div className="container">
               <div className="row">
-                <div className="col">
-                  <p className="text--center">
-                    <a
-                      href="https://www.npmjs.com/package/next-auth"
-                      className="button button--primary button--outline rounded-pill button--lg"
-                    >
-                      npm install next-auth
-                    </a>
+                <div className="col col--10 col--offset-1">
+                  <p>
+                    <h2 className={styles.featuresTitle}>
+                      Single pane for complete metrics and traces, no need to shift to different systems
+                    </h2>
                   </p>
+
+                  <div className="row padding-top--md">
+                    <div className="col col--4">
+                      <div className={`tab-button ${panelImage === 'https://signoz.io/img/metrics-tooltip-traces.jpg' ? 'selected' : 'unselected'}`} onClick={() => setPaneImage('https://signoz.io/img/metrics-tooltip-traces.jpg')}>
+                        Integrated UI for metrics and traces
+                      </div>
+                      <div className={`tab-button margin-top--md ${panelImage === 'https://signoz.io/img/business-metrics-light.jpg' ? 'selected' : 'unselected'}`} onClick={() => setPaneImage('https://signoz.io/img/business-metrics-light.jpg')}>
+                        Run business specific queries
+                      </div>
+                      <div className={`tab-button margin-top--md ${panelImage === 'https://signoz.io/img/custom-aggregates.jpg' ? 'selected' : 'unselected'}`} onClick={() => setPaneImage('https://signoz.io/img/custom-aggregates.jpg')}>
+                        Run aggregates on custom tags
+                      </div>
+                    </div>
+                    <div className="col col--8">
+                      <img src={panelImage} />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </section> */}
+          </section>
+
+          <section className={`section-features ${styles.features}`}>
+            <div className="container">
+              <div className="row">
+                <div className="col col--10 col--offset-1">
+                  <p className="text--center">
+                    <h1 className={styles.featuresTitle}>
+                      Why datav?
+                    </h1>
+                  </p>
+
+                  <div className="row padding-top--md">
+                    <div className="col col--5 card">
+                      <div className="card__body">
+                        Native support for OpenTelemetry, emerging industry standard for instrumentation
+                      </div>
+                    </div>
+                    <div className="col col--5 col--offset-1 card">
+                      <div className="card__body">
+                        Monitor your usage & set your own retention period and sampling rate based on your needs
+                      </div>
+                    </div>
+                    <div className="col col--5 card">
+                      <div className="card__body">
+                        Industry trusted infrastructure to handle enterprise scale. No scaling pains. Ever.
+                      </div>
+                    </div>
+                    <div className="col col--5  col--offset-1 card">
+                      <div className="card__body">
+                        Built on latest stack - Golang & React-Typescript loved by developers
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <div className="home-subtitle">
             <p>Datav is a fully open source community project.</p>
           </div>

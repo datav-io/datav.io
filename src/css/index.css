@@ -30,6 +30,8 @@
   --ifm-navbar-background-color: rgba(255, 255, 255, 0.95);
   --ifm-h1-font-size: 3rem;
   --ifm-h1-font-size: 2rem;
+
+  --ifm-background-black-color: #252526;
 }
 
 html[data-theme="dark"]:root {
